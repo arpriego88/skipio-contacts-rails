@@ -1,0 +1,11 @@
+.container
+  h1 New Message to #{@contact_name}
+  .row.text-center
+    .col-lg-4.col-md-6.col-sm-12
+      .card
+        .card-body
+          = form_tag contact_messages_path(@message.contact_id) do
+            .form-group
+              = text_area_tag :body, nil, size: "25x5"
+            .form-group
+              = submit_tag "Send message to #{@contact_name}", class: "btn btn-primary"

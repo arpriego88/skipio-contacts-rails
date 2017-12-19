@@ -1,0 +1,22 @@
+.container
+  header.jumbotron.my-4
+    h1.display-3 Contacts Page
+    p.lead Select a contact you would like to send a message to.
+  .row.text-center
+    - @contacts.each do |contact|
+      .col-lg-2.col-md-6.col-sm-12
+        .card
+          img.card-img-top src="#{contact['avatar_url']}"
+          .card-body
+            h4.card-title
+              = contact['full_name']
+            - if contact['street_address'].present?
+              ul.list-group
+                li.list-group-item Street Address: #{contact['street_address']}
+                li.list-group-item City: #{contact['city']}
+                li.list-group-item State: #{contact['state']}
+                li.list-group-item Zip: #{contact['zip_code']}
+            - else
+              p No Address Provided
+            .card-footer
+              = link_to 'Send Text Message', new_contact_message_path(contact['id'], contact_full_name: contact['full_name'], class: 'btn btn-primary')

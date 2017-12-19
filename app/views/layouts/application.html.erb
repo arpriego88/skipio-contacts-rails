@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SkipioContactsRails</title>
+    <title>SkipioAudition</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
+    <link href="https://blackrockdigital.github.io/startbootstrap-heroic-features/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://blackrockdigital.github.io/startbootstrap-heroic-features/css/heroic-features.css" rel="stylesheet">
+  </head>
   <body>
+    <div>
+      <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>">
+            <%= value %>
+          </div>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
